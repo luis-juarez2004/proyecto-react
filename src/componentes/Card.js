@@ -1,5 +1,6 @@
 import {Button} from 'react-bootstrap';
 import {Card} from 'react-bootstrap';
+import Item from './Item';
 import ItemCount from './ItemCount';
 
 const onAdd = (quantity) => {
@@ -15,7 +16,8 @@ return (
         <Card.Text>
         {props.descripcion}
         </Card.Text>
-        <Button variant="primary">{props.precio}</Button>
+        <Item />
+        <Button variant="success">{props.precio}$</Button>
         <ItemCount initial={1} stock={10} onAdd={onAdd}/>
     </Card.Body>
     </Card>
