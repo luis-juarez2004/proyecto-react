@@ -1,7 +1,7 @@
-function ItemListContainer(){
+function ItemListContainer({title}){
     return(
     <div>
-        <h2>Tienda Capricornio</h2>
+        <h2>{title}</h2> 
     </div>
     );
 }
