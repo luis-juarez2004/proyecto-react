@@ -7,7 +7,7 @@
         "categoria":"Desayuno",
         "descripcion":"Yerba CBSÉ 1KG",
         "id":1,
-        "img":""
+        "img":"./assets/image/yerbacbse.jpg"
     },
     { 
     "nombre":"Azucar",
@@ -17,7 +17,7 @@
         "categoria":"Desayuno",
         "descripcion":"Azucar Ledesma 1KG",
         "id":2,
-        "img":""
+        "img":"./assets/image/azucarledesma.jpg"
     },
     { 
     "nombre":"Gaseosa",
@@ -27,6 +27,6 @@
         "categoria":"Cena",
         "descripcion":"Coca Cola 2,25LT",
         "id":3,
-        "img":""
+        "img":"./assets/image/cocacola.jpg"
     }
 ]
