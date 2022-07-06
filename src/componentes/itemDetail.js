@@ -1,12 +1,19 @@
-function ItemDetail({id, nombre, precio, img, descripcion}){
+import ItemCount from './ItemCount';
+
+function ItemDetail({id, nombre, precio, img, descripcion, categoria}){
+    const onAdd = (quantity) => {
+        console.log(`Compraste ${quantity} unidades`)
+    };
     return(
         <div>
+            <h2>{categoria}</h2>
             <div>
-                <img src={img} alt={id} />
+                <img src={img} alt={id}  />
                 <div>
-                <h2>{nombre}</h2>
+                <h3>{nombre}</h3>
                 <p>{descripcion}</p>
-                <h2>{precio}$</h2>
+                <ItemCount initial={1} stock={10} onAdd={onAdd}/>
+                <h3>{precio}$</h3>
                 </div>
             </div>
         </div>

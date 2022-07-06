@@ -15,10 +15,10 @@ function ItemListContainer({title}){
     return(
     <section> 
     <div>
-        <h2>{title}</h2> 
+        <h3>{title}</h3> 
     </div>
         <div className="carta">
-            {info && info.map(i => <Item nombre={i.nombre} precio={i.precio} img={i.img} descripcion={i.descripcion} /> )}
+            {info && info.map(i => <Item nombre={i.nombre} precio={i.precio} img={i.img} descripcion={i.descripcion} categoria={i.categoria} /> )}
         </div>
     </section>
     );

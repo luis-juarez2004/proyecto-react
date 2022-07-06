@@ -10,7 +10,7 @@ function ItemDetailContainer(){
             setTimeout(() => {
                 const myData = data.find((item) => item.id === '1');
                 resolve(myData);
-            }, 2000);
+            }, 2000)
         });
         getItems.then((res) => {
             setProducts(res);
