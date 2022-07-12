@@ -1,10 +1,12 @@
+import Item from "./Item";
 
-
-function ItemList(){
+function ItemList({items}){
     return(
-        <div>
-            
-        </div>
+        <section className="flex-row">
+            {items?.map((item) => (
+                <Item {...item} key={items.id} />
+            ))}
+        </section>
     );
 }
 

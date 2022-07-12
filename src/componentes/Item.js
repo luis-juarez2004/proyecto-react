@@ -1,18 +1,13 @@
-import {Card} from 'react-bootstrap';
-
-
-function Item(props) {
+function Item({id, nombre, precio, categoria, img }) {
 return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={props.img} />
-    <Card.Body>
-        <Card.Title>{props.nombre}</Card.Title>
-        <Card.Text >
-        Categoria:{props.categoria}
-        </Card.Text>
-        <button>Ver detalles del producto</button>
-    </Card.Body>
-    </Card>
+    <div className={`item_card ${categoria}-categoria`}>
+    <span>{nombre}</span>
+    <span>Categoria: {categoria}</span>
+    <span>
+        <img src={img} alt={nombre} className={'small-img'} />
+    </span>
+    <span>${precio}</span>
+    </div>
 );
 }
 

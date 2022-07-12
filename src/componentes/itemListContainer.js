@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
-import Item from "./Item";
 import "./item.css";
+import {data} from '../data/data';
+import ItemList from "./ItemList";
+import {useParams} from 'react-router-dom';
 
 function ItemListContainer({title}){
-    const [info, setInfo] = useState([])
+    const [item, setItem] = useState([])
+
+    const {catid} = useParams(); 
 
     useEffect(() => {
-        fetch('Data.json')
-        .then((resp) => resp.json())
-        .then((data) => setInfo(data))
+        const getItem = new Promise((resolve) => {
+            setTimeout(() => {
+                const myData = catid?data.filter((item) => item.categoria === catid) : data;
+                resolve(myData);
+            }, 1000);
+        });
+        getItem.then((res) => {
+            setItem(res);
+        });
     },[])
 
-    console.log(info)
+    console.log(item)
     return(
-    <section> 
-    <div>
+    <div className="flex">
         <h3>{title}</h3> 
+        <ItemList items={item} />
     </div>
-        <div className="carta">
-            {info && info.map(i => <Item nombre={i.nombre} precio={i.precio} img={i.img} descripcion={i.descripcion} categoria={i.categoria} /> )}
-        </div>
-    </section>
     );
 }
 

@@ -8,12 +8,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <NavBar />
-      <Routes>
-      <Route path="/" element={<ItemListContainer title="Bienvenidos a Tienda Capricornio" />} />
-      <Route path="/" element={<ItemDetailContainer />} />
-      </Routes>
-      </BrowserRouter>
+        <NavBar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer title="Bienvenidos a Tienda Capricornio" />} />
+            <Route path="/categoria/:catid" element={<ItemListContainer title="Filtrado" />} />
+            <Route path="/item" element={<ItemDetailContainer />} />
+          </Routes>
+        </BrowserRouter>
       </div>
   );
 }

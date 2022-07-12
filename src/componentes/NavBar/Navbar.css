@@ -1,0 +1,11 @@
+section {
+    background-color: #231955;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Links {
+    color: white;
+    text-decoration: none;
+}
