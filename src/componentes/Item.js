@@ -1,12 +1,12 @@
-function Item({id, nombre, precio, categoria, img }) {
+function Item({item}) {
 return (
-    <div className={`item_card ${categoria}-categoria`}>
-    <span>{nombre}</span>
-    <span>Categoria: {categoria}</span>
+    <div className={`item_card ${item.categoria}-categoria`}>
+    <span>{item.nombre}</span>
+    <span>Categoria: {item.categoria}</span>
     <span>
-        <img src={img} alt={nombre} className={'small-img'} />
+        <img src={item.img} alt={item.nombre} className={'small-img'} />
     </span>
-    <span>${precio}</span>
+    <span>${item.precio}</span>
     </div>
 );
 }
