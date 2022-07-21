@@ -3,7 +3,7 @@ import "./ItemDetail.css";
 import { useContext } from 'react';
 import { CartContext } from './cartContext';
 
-function ItemDetail({item, items ,count}){
+function ItemDetail({items, count, img, id, nombre, descripcion, precio}){
     const {addToCart} = useContext(CartContext);
 
     const onAdd = (quantity) => {
@@ -16,12 +16,12 @@ function ItemDetail({item, items ,count}){
     }
     return(
         <div className='detail-row'>
-                <img src={item.img} alt={`${item.id}-${item.nombre}`}/>
-                <h3>{item.nombre}</h3>
-                <p>{item.descripcion}</p>
+                <img src={img} alt={`${id}-${nombre}`}/>
+                <h3>{nombre}</h3>
+                <p>{descripcion}</p>
                 <ItemCount initial={1} stock={5} onAdd={onAdd}/>
                 <button onClick={clickHandler}>Finalizar compra</button>
-                <h3>${item.precio}</h3>
+                <h3>${precio}</h3>
         </div>
     );
 }

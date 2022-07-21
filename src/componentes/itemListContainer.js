@@ -19,13 +19,13 @@ function ItemListContainer({title}){
         getItem.then((res) => {
             setItem(res);
         });
-    },[])
+    },[catid])
 
     console.log(item)
     return(
     <div className="flex">
         <h3>{title}</h3> 
-        <ItemList items={item} />
+        <ItemList {...item} />
     </div>
     );
 }

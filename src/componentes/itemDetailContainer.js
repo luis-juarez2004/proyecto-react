@@ -1,6 +1,7 @@
-import { useEffect, useState, useParams } from "react";
+import { useEffect, useState} from "react";
 import ItemDetail from "./itemDetail";
-import {data} from "../data/data"
+import {data} from "../data/data";
+import { useParams } from "react-router-dom";
 
 function ItemDetailContainer(){
     const [products, setProducts] = useState({});
@@ -17,9 +18,9 @@ function ItemDetailContainer(){
         getItems.then((res) => {
             setProducts(res);
         });
-    }, []);
+    }, [itemid]);
     return(
-        <ItemDetail item={products} />
+        <ItemDetail {...products} />
     );
 }
 
