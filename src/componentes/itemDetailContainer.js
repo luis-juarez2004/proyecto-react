@@ -8,6 +8,8 @@ function ItemDetailContainer(){
     
     const {itemid} = useParams();
 
+    
+
     useEffect(() => {
         const getItems = new Promise((resolve) => {
             setTimeout(() => {

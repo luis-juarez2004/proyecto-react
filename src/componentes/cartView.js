@@ -22,12 +22,12 @@ const CartView = () => {
                 {showOrder? (
                     <div>
                         {cart.map((e) => { 
-                                <div key={e.item.id}>
-                                <img src={e.item.img} />
-                                <span>{e.item.nombre}</span>
-                                <span>${e.item.precio}</span>
-                                <span>Cantidad: {e.item.quantity}</span>
-                                <button onClick={() => removeFromCart(e.item.id)}>{""}
+                                <div key={e.id}>
+                                <img src={e.img} alt={e.nombre}/>
+                                <span>{e.nombre}</span>
+                                <span>${e.precio}</span>
+                                <span>Cantidad: {e.quantity}</span>
+                                <button onClick={() => removeFromCart(e.id)}>{""}
                                 Eliminar{""}</button>
                             </div>
                 })} 

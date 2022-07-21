@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./item.css";
+import "./itemListContainer.css";
 import {data} from '../data/data';
 import ItemList from "./ItemList";
 import {useParams} from 'react-router-dom';
@@ -25,7 +25,7 @@ function ItemListContainer({title}){
     return(
     <div className="flex">
         <h3>{title}</h3> 
-        <ItemList {...item} />
+        <ItemList items={item} />
     </div>
     );
 }

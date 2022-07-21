@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function ItemCount({initial, stock, onAdd}){
     const [count, setCount] = useState(initial);
 
     const decrease = () => {
-        setCount(count + initial);
+        setCount(count - 1);
     }
     const increase = () => {
-        setCount(count - stock)
+        setCount(count + 1)
     }
 
     
@@ -17,7 +18,7 @@ function ItemCount({initial, stock, onAdd}){
             <span>{count}</span>
             <button disabled={count >= stock} onClick={increase}>+</button>
             <div>
-                <button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
+                <Link to="./cart"><button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button></Link>
             </div>
         </div>
     )
