@@ -1,15 +1,17 @@
 import ItemCount from './ItemCount';
 import "./ItemDetail.css";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from './cartContext';
 import { Link } from 'react-router-dom';
 
-function ItemDetail({items, count, img, id, nombre, descripcion, precio}){
+function ItemDetail(props){
     const {addToCart} = useContext(CartContext);
 
-    const onAdd = (quantity) => {
-        console.log(`Compraste ${quantity} unidades`)
-        addToCart(items , count);
+    const [ItemsCount, setItemsCount] = useState();
+
+    const onAdd = (num) => {
+        setItemsCount(num)
+        addToCart(props, num);
     };
 
     const clickHandler = () => {
@@ -18,12 +20,20 @@ function ItemDetail({items, count, img, id, nombre, descripcion, precio}){
     return(
         <div className='detail-row'>
                 <h2>Detalle del producto</h2>
-                <img src={img} alt={`${id}-${nombre}`}/>
-                <h3>{nombre}</h3>
-                <p>{descripcion}</p>
-                <ItemCount initial={1} stock={5} onAdd={onAdd}/>
-                <Link to="./cart"><button onClick={clickHandler}>Finalizar compra</button></Link>
-                <h3>${precio}</h3>
+                <img src={props.img} alt={`${props.id}-${props.nombre}`}/>
+                <h3>{props.nombre}</h3>
+                <p>{props.descripcion}</p>
+                {/* <ItemCount initial={1} stock={5} onAdd={onAdd}/>
+                <button onClick={clickHandler}>Finalizar compra</button> */}
+                <h3>${props.precio}</h3>
+                {/* <Link to="./cart"><button>Ir al carrito</button></Link> */}
+                <div>
+                    {ItemsCount > 0 ? (
+                        <Link to="/item/:itemid/cart">Finalizar Compra</Link>
+                    ): (
+                        <ItemCount onAdd={onAdd} stock={props.stock} initial={0} />
+                    )}
+                </div>
         </div>
     );
 }

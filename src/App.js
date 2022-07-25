@@ -3,8 +3,9 @@ import ItemDetailContainer from './componentes/itemDetailContainer';
 import ItemListContainer from './componentes/itemListContainer';
 import NavBar from './componentes/NavBar/navBar';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { CartProvider } from './componentes/cartContext';
-import { Cart } from './componentes/cart';
+import { CartProvider } from './componentes/cartContext';/* 
+import { Cart } from './componentes/cart'; */
+import CartView from './componentes/cartView';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <Route path="/" element={<ItemListContainer title="Bienvenidos a Tienda Capricornio" />} />
             <Route path="/categoria/:catid" element={<ItemListContainer title="Filtrado" />} />
             <Route path="/item/:itemid" element={<ItemDetailContainer />} />
-            <Route path='/item/:itemid/cart' element={<Cart/>} />
+            <Route path='/item/:itemid/cart' element={<CartView/>} />
           </Routes>
         </BrowserRouter>
         </CartProvider>

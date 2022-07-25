@@ -4,20 +4,20 @@ export const CartContext = createContext([])
 
 const {Provider} = CartContext
 
-export const CartProvider = ({defaultValue = [], children}) => {
-    const [cart, setCart] = useState(defaultValue);
+export const CartProvider = ({children}) => {
+    const [cart, setCart] = useState([]);
 
     const clearCart = () => {
         setCart([]);
     };
 
-    const addToCart = (item, quantity) => {
-        console.log(item)
-        if(isInCart(item.id)) {
+    const addToCart = (props, num) => {
+        console.log(props)
+        if(isInCart(props.id)) {
             const newCart = [...cart]
             for(const element of newCart) {
-                if(element.item.id === item.id) {
-                    element.quantity = element.quantity + quantity;
+                if(element.props.id === props.id) {
+                    element.num = element.num + num;
                 }
             }
             setCart(newCart);
@@ -26,8 +26,8 @@ export const CartProvider = ({defaultValue = [], children}) => {
                 [
                     ...cart,
                     {
-                        item : item,
-                        quantity : quantity,
+                        props : props,
+                        num : num,
                     }
                 ]
             )
@@ -35,29 +35,29 @@ export const CartProvider = ({defaultValue = [], children}) => {
     };
 
     const removeFromCart = (id) => {
-        const newCart = [...cart].filter(element => element.item.id !== id)
+        const newCart = [...cart].filter(element => element.props.id !== id)
         setCart(newCart);
     };
 
     const isInCart = (id) => {
-        return cart.find((element) => element.item.id === id);
+        return cart.find((element) => element.props.id === id);
     }
 
     const getQuantity = () => {
         let cantidad = 0
-        cart.forEach((element) => cantidad = cantidad + element.quantity)
+        cart.forEach((element) => cantidad = cantidad + element.props.num)
         return cantidad
     }
 
     const getTotal = () => {
         let total = 0 
         cart.forEach((element) => {
-            total = total + (element.quantity * element.item.price)
+            total = total + (element.num * element.props.precio)
         })
         return total
     }
 
-    const context = {
+    /* const context = {
         cart,
         clearCart,
         addToCart,
@@ -65,10 +65,17 @@ export const CartProvider = ({defaultValue = [], children}) => {
         isInCart,
         getQuantity,
         getTotal,
-    }
+    } */
 
     return (
-        <Provider value={context}>
+        <Provider value={{cart,
+            clearCart,
+            addToCart,
+            removeFromCart,
+            isInCart,
+            getQuantity,
+            getTotal,
+        }}>
             {children}
         </Provider>
     )
