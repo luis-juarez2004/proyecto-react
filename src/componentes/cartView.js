@@ -7,7 +7,7 @@ function CartView({id, stock, nombre, precio}){
     const { cart, removeFromCart, getTotal, clearCart} = useContext(CartContext);
     return(
         <>
-        {cart.lenght > 0 ? (
+        {cart.length > 0 ? (
             <div>
                 <h2>Finaliza la compra</h2>
                 <div>

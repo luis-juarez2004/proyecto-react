@@ -7,16 +7,18 @@ import { Link } from 'react-router-dom';
 function ItemDetail(props){
     const {addToCart} = useContext(CartContext);
 
-    const [ItemsCount, setItemsCount] = useState();
+    const [ItemsCount, setItemsCount] = useState([]);
 
     const onAdd = (num) => {
         setItemsCount(num)
         addToCart(props, num);
     };
 
-    const clickHandler = () => {
+    console.log(useState)
+
+    /* const clickHandler = () => {
         console.log("Compra finalizada");
-    }
+    } */
     return(
         <div className='detail-row'>
                 <h2>Detalle del producto</h2>

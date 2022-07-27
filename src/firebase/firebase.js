@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getFirestore, collection, getDocs} from "firebase/firestore";
+import {collection, doc, getDoc, getDocs, getFirestore} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,13 +25,34 @@ const db = getFirestore(app);
 
 export function TestDB(){
     console.log(db)
+    console.log(analytics)
 }
 
-export function getProductos(){
+export async function getProductos(){
     const productosCollectionRef = collection(db, "Productos");
-    const docSnapshot = getDocs(productosCollectionRef)
+    const docSnapshot = await getDocs(productosCollectionRef)
 
-    return docSnapshot;
+    const dataProductos = docSnapshot.docs.map( item => {
+        const Productos = {
+            ...item.data(),
+            id: item.id,
+        }
+    
+        return Productos
+    })
+
+    return dataProductos;
+}
+
+export async function getProductosId(id){
+    const refCollection = collection(db, "Productos");
+    const docRef = doc(refCollection, id);
+    const docSnapshot1 = await getDoc(docRef);
+    const products = {
+        ...docSnapshot1.data(),
+        id: docSnapshot1.id,
+    };
+    return products;
 }
 
 export default db;

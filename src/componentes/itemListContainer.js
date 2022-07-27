@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./itemListContainer.css";
-import {data} from '../data/data';
 import ItemList from "./ItemList";
 import {useParams} from 'react-router-dom';
 import {getProductos, TestDB} from "../firebase/firebase";
@@ -13,17 +12,13 @@ function ItemListContainer({title}){
     console.log("prueba", TestDB())
 
     useEffect(() => {
-        getProductos();
-        const getItem = new Promise((resolve) => {
-            setTimeout(() => {
-                const myData = catid?data.filter((item) => item.categoria === catid) : data;
-                resolve(myData);
-            }, 1000);
-        });
-        getItem.then((res) => {
-            setItem(res);
-        });
-    },[catid])
+        getProductos().then((Productos) =>{
+            setItem(Productos);
+        })
+        .catch( (errorMsg) => {
+            console.log(errorMsg)
+        })
+    },[])
 
     console.log(item)
     return(
