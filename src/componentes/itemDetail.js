@@ -31,7 +31,7 @@ function ItemDetail(props){
                 {/* <Link to="./cart"><button>Ir al carrito</button></Link> */}
                 <div>
                     {ItemsCount > 0 ? (
-                        <Link to="/item/:itemid/cart">Finalizar Compra</Link>
+                        <Link to="/item/:itemid/cart">Ir al carrito</Link>
                     ): (
                         <ItemCount onAdd={onAdd} stock={props.stock} initial={0} />
                     )}
