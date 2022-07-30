@@ -5,9 +5,9 @@ import ItemDetail from "./itemDetail";
 import {addDoc, collection, getFirestore, } from "firebase/firestore";
 
 
-function CartView({props}){
+function CartView({nombre, id, stock, img, precio}){
 
-    const [orderId, setOrderId] = useState()
+ /*   let [orderId, setOrderId] = useState()
 
     const sendOrder = () => {
         orderId = {
@@ -21,8 +21,8 @@ function CartView({props}){
 
         const ordersCollection = collection(db, "orders")
     
-        addDoc(ordersCollection, order).then(({id}) => setOrderId(id))
-    }
+        addDoc(ordersCollection, orderId).then(({id}) => setOrderId(id))
+    }*/
 
     const { cart, removeFromCart, getTotal, clearCart} = useContext(CartContext);
     return(
@@ -31,13 +31,13 @@ function CartView({props}){
             <div>
                 <h2>Carrito</h2>
                 <div>
-                    {cart.map(() => <ItemDetail key={props.id} id={props.id} stock={props.stock} img={props.img} nombre={props.nombre} precio={props.precio} removeFromCart={removeFromCart(props.id)}/>)}
+                    {cart.map(() => <ItemDetail key={id} id={id}  precio={precio} removeFromCart={removeFromCart}/>)}
                 </div>
                 <div>
                     <p>Precio final: ${getTotal()}</p>
                     <Link to="/">Sigue comprando</Link>
                     <button onClick={clearCart}>Vaciar carrito</button>
-                    <button onClick={sendOrder}>Finalizar compra</button>
+                    <button>Finalizar compra</button>
                 </div>
             </div>
         ): (

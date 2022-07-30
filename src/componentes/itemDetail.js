@@ -14,7 +14,7 @@ function ItemDetail(props){
         addToCart(props, num);
     };
 
-    console.log(useState)
+    //console.log(useState)
 
     /* const clickHandler = () => {
         console.log("Compra finalizada");
